@@ -10,7 +10,9 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     final store = await GalleryStore.create();
     await tester.pumpWidget(HelloApp(store: store));
-    await tester.pumpAndSettle();
+    // لا نستخدم pumpAndSettle: تحميل الصور من الشبكة قد لا «يهدأ» في بيئة الاختبار.
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 500));
 
     expect(find.textContaining('معرض'), findsOneWidget);
     expect(find.textContaining('Flutter'), findsOneWidget);
