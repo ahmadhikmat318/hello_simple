@@ -1,0 +1,6 @@
+# This file tracks properties of this project for Flutter tooling.
+version:
+  revision: "stable"
+  channel: stable
+
+project_type: app
